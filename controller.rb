@@ -6,6 +6,12 @@ require_relative "./models/game"
 
 get '/play/:throw1/:throw2' do
   game = Game.new(params[:throw1], params[:throw2])
-  return game.play
+  @game = game.play
+  erb (:result)
+end
 
+
+#nav bar
+get '/' do
+  erb :home
 end
