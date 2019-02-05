@@ -29,4 +29,25 @@ class TestGame < Minitest::Test
 
   end
 
+  def test_play__rock_paper
+    assert_equal("Paper wins", @game_1.play)
+    assert_equal("Paper wins", @game_2.play)
+  end
+
+  def test_play__rock_scissors
+    assert_equal("Rock wins", @game_3.play)
+    assert_equal("Rock wins", @game_4.play)
+  end
+
+  def test_play__paper_scissors
+    assert_equal("Scissors wins", @game_5.play)
+    assert_equal("Scissors wins", @game_6.play)
+  end
+
+  def test_play__ties
+    assert_equal("Tie!", @game_7.play)
+    assert_equal("Tie!", @game_8.play)
+    assert_equal("Tie!", @game_9.play)
+  end
+
 end
