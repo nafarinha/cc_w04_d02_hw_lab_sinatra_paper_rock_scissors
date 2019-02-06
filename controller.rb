@@ -2,11 +2,12 @@ require "sinatra"
 require "sinatra/contrib/all" if development?
 require "pry-byebug"
 require_relative "./models/game"
+also_reload "./models/*"
 
 
 get '/play/:throw1/:throw2' do
   game = Game.new(params[:throw1], params[:throw2])
-  @game = game.play
+  @game = "#{game.play}"
   erb (:result)
 end
 
