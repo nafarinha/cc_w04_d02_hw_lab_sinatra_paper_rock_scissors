@@ -30,24 +30,35 @@ class TestGame < Minitest::Test
   end
 
   def test_play__rock_paper
-    assert_equal("Paper wins", @game_1.play)
-    assert_equal("Paper wins", @game_2.play)
+    assert_match("Paper wins!", @game_1.play)
+    assert_match("Paper wins!", @game_2.play)
   end
 
   def test_play__rock_scissors
-    assert_equal("Rock wins", @game_3.play)
-    assert_equal("Rock wins", @game_4.play)
+    assert_match("Rock wins!", @game_3.play)
+    assert_match("Rock wins!", @game_4.play)
   end
 
   def test_play__paper_scissors
-    assert_equal("Scissors wins", @game_5.play)
-    assert_equal("Scissors wins", @game_6.play)
+    assert_match("Scissors wins!", @game_5.play)
+    assert_match("Scissors wins!", @game_6.play)
   end
 
-  def test_play__ties
-    assert_equal("Tie!", @game_7.play)
-    assert_equal("Tie!", @game_8.play)
-    assert_equal("Tie!", @game_9.play)
+  def test_play__draw
+    assert_equal("It's a draw! Play again", @game_7.play)
+    assert_equal("It's a draw! Play again", @game_8.play)
+    assert_equal("It's a draw! Play again", @game_9.play)
   end
 
+  def test_play__winner_first_player
+    assert_match(/player 1!$/, @game_2.play)
+    assert_match(/player 1!$/, @game_3.play)
+    assert_match(/player 1!$/, @game_6.play)
+  end
+  #
+  def test_play__winner_second_player
+    assert_match(/player 2!$/, @game_1.play)
+    assert_match(/player 2!$/, @game_4.play)
+    assert_match(/player 2!$/, @game_5.play)
+  end
 end
